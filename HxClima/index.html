@@ -6,27 +6,25 @@
     <script src="AngularClima.js"></script>
     <script src="funciones.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 
 <body ng-app="myApp">
-    <form ng-controller="actividadController">
+    <form ng-controller="actividadController" ng-submit="mostrar()">
         <h3>Seleccionar actividad:</h3>
-        <select ng-model="actividadSeleccionada">
+        <select ng-model="actividadSeleccionada" required>
             <option ng-repeat="actividad in actividades" value="{{ actividad.Nombre }}">
                 {{ actividad.Nombre }}
             </option>
         </select>
         <h4>Seleccion: {{actividadSeleccionada}}</h4>
         <h3>Seleccionar cantidad de dias:</h3>
-        <select name="dias" >
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
+        <select ng-model="diaSeleccionado" required>
+            <option ng-repeat="dia in cantidades" value="{{ dia }}">
+                {{ dia }}
+            </option>
         </select>
-        <button type="submit" onsubmit="mostrar()">Aceptar</button>
+        <button type="submit">Aceptar</button>
     </form>
 </body>
 </html>

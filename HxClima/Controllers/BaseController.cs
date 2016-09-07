@@ -23,5 +23,11 @@ namespace HxClima.Controllers
 
             return Ok(dias);
         }
+        
+        public IHttpActionResult DiasQueRealizaActividad(string s)
+        {
+            var json = JsonConvert.DeserializeObject(s);
+            return null;
+        }
     }
 }
