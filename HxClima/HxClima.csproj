@@ -90,6 +90,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Actividad.cs" />
+    <Compile Include="Models\Clima.cs" />
     <Compile Include="Models\DailyForecast.cs" />
     <Compile Include="Models\Day.cs" />
     <Compile Include="Models\HeadLine.cs" />

@@ -10,7 +10,7 @@ namespace HxClima.Controllers
 {
     public class DiaController : ApiController
     {
-         [HttpGet]
+        [HttpGet]
         public IHttpActionResult Dias()
         {
             //var json = JsonConvert.DeserializeObject();

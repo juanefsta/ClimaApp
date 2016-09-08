@@ -1,4 +1,4 @@
-﻿using HxClimaWebApp.Models;
+﻿using HxClima.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -20,14 +20,9 @@ namespace HxClima.Controllers
                 var json = wc.DownloadString("http://dataservice.accuweather.com/forecasts/v1/daily/5day/7894?4eq974m8yEZNwRONLMCGs9Kzx9MkUOwV&apikey=4eq974m8yEZNwRONLMCGs9Kzx9MkUOwV&language=es-ar&details=false&metric=true");
                 dias = JsonConvert.DeserializeObject<RootObject>(json).DailyForecasts;
             }
+            List<Clima> climas = new List<Clima>();
 
             return Ok(dias);
-        }
-        
-        public IHttpActionResult DiasQueRealizaActividad(string s)
-        {
-            var json = JsonConvert.DeserializeObject(s);
-            return null;
         }
     }
 }

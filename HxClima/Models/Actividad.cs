@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace HxClimaWebApp.Models
+namespace HxClima.Models
 {
     public class Actividad
     {
