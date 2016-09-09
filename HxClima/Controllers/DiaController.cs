@@ -18,34 +18,51 @@ namespace HxClima.Controllers
             Json recibo = JsonConvert.DeserializeObject<Json>(json.ToString());
             Actividad actividad = JsonConvert.DeserializeObject<Actividad>(recibo.actividad.ToString());
             int diasPosibles = 0;
-            int[] estadoDelClima = new int[] { 2 };
-            int indexOfArray = 0;
-            while (diasPosibles < recibo.dia || indexOfArray < recibo.climas.Length)
+            int[] estadoDelClima = new int[] { 8, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 29, 39, 40, 41, 42, 43, 44 };
+            int indexOfList = 0;
+            List<dynamic> devuelve = new List<dynamic>();
+            while (diasPosibles < recibo.dia && indexOfList < recibo.climas.Count)
             {
+                dynamic dia = new JObject();
                 bool hayLluvias = false;
                 bool superaTempMin = false;
 
-                //Pregunto si el estado coincide con alguno lluvioso
-                if (incluye(estadoDelClima, recibo.climas[indexOfArray].iDia) ||
-                    incluye(estadoDelClima, recibo.climas[indexOfArray].iNoche))
+                //Pregunto si el estado coincide con alguno lluvioso siempre y cuando influya el mal tiempo
+                if (actividad.LluviaIndispensable)
                 {
-                    hayLluvias = true;
+                    if (incluye(estadoDelClima, recibo.climas.ElementAt(indexOfList).iDia) ||
+                        incluye(estadoDelClima, recibo.climas.ElementAt(indexOfList).iNoche))
+                    {
+                        hayLluvias = true;
+                    }
                 }
+
                 //Pregunto si la temperatura minima es menor a la esperada
-                if (recibo.climas[indexOfArray].tempMinima < actividad.TempMin)
+                if (recibo.climas.ElementAt(indexOfList).tempMinima < actividad.TempMin)
                 {
                     superaTempMin = true;
                 }
 
-                if (actividad.LluviaIndispensable.Equals(hayLluvias) ||
+                if (actividad.LluviaIndispensable.Equals(hayLluvias) &&
                     !superaTempMin)
                 {
                     diasPosibles++;
+                    dia.fecha = recibo.climas.ElementAt(indexOfList).date;
+                    dia.sePuede = true;
+                    dia.explicacion = "";
+                    devuelve.Add(dia);
                 }
-                indexOfArray++;
+                else
+                {
+                    dia.fecha = recibo.climas.ElementAt(indexOfList).date;
+                    dia.sePuede = false;
+                    dia.explicacion ="mal tiempo";
+                    devuelve.Add(dia);
+                }
+                indexOfList++;
             }
 
-            return Ok(diasPosibles);
+            return Ok(devuelve);
         }
 
         private bool incluye(int[] estados, int icon)
@@ -58,16 +75,12 @@ namespace HxClima.Controllers
              * 
              */
             bool encuentra = false;
-            int index = 0;
-            while (!encuentra)
+            for (int i = 0; i < estados.Length; i++)
             {
-                if (estados[index].Equals(icon))
+                if (estados[i].Equals(icon))
                 {
                     encuentra = true;
-                }
-                else
-                {
-                    index++;
+                    break;
                 }
             }
             return encuentra;

@@ -30,6 +30,7 @@ namespace HxClima.Controllers
                                                  dia.Day.Icon,
                                                  dia.Night.Icon);
                     climas.Add(nuevoClima);
+                    continue;
                 }
 
             return Ok(climas);

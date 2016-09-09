@@ -6,13 +6,13 @@ app.controller( 'actividadController', function ( $scope, $http )
     $http.get( "/api/actividad" ).then( function ( response )
     {
         $scope.actividades = response.data;
-        
+
     } );
 
     $http.get( "/api/base" ).then( function ( response )
     {
         $scope.dias = response.data;
-    } );
+     } );
 
     $scope.mostrar = function ()
     {
@@ -23,8 +23,8 @@ app.controller( 'actividadController', function ( $scope, $http )
         };
         $http.post( '/api/dia', config )
            .success( function ( data, status, headers, config )
-           {               
-               $scope.prueba.push( data);
+           {
+               $scope.prueba.push( data );
            } );
     };
 } );

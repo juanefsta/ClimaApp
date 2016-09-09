@@ -9,7 +9,7 @@ namespace HxClima.Models
     public class Json
     {
         [JsonProperty("days")]
-        public Clima[] climas { get; set; }
+        public List<Clima> climas { get; set; }
 
         [JsonProperty("cantidad")]
         public int dia { get; set; }
