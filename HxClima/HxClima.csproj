@@ -94,6 +94,7 @@
     <Compile Include="Models\DailyForecast.cs" />
     <Compile Include="Models\Day.cs" />
     <Compile Include="Models\HeadLine.cs" />
+    <Compile Include="Models\Json.cs" />
     <Compile Include="Models\Maximum.cs" />
     <Compile Include="Models\Minimum.cs" />
     <Compile Include="Models\Night.cs" />

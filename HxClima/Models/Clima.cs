@@ -7,10 +7,19 @@ namespace HxClima.Models
 {
     public class Clima
     {
-        public string Date { get; set; }
+        
+        public Clima(string fecha, double min,  int IconDia, int IconNoche)
+        {
+
+            date = fecha;
+            tempMinima = min;
+            iDia = IconDia;
+            iNoche = IconNoche;
+        }
+        public string date { get; set; }
         public double tempMinima { get; set; }
         public double? tempMaxima { get; set; }
-        public string fraseDia { get; set; }
-        public string fraseNoche { get; set; }
+        public int iDia { get; set; }
+        public int iNoche { get; set; }
     }
 }

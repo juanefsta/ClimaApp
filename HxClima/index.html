@@ -13,7 +13,7 @@
     <form ng-controller="actividadController" ng-submit="mostrar()">
         <h3>Seleccionar actividad:</h3>
         <select ng-model="actividadSeleccionada" required>
-            <option ng-repeat="actividad in actividades" value="{{ actividad.Nombre }}">
+            <option ng-repeat="actividad in actividades" value="{{actividad}}">
                 {{ actividad.Nombre }}
             </option>
         </select>
@@ -27,6 +27,7 @@
         <button type="submit">Aceptar</button>
         <br />
         {{prueba}}
+        {{dias}}
     </form>
 </body>
 </html>

@@ -1,4 +1,5 @@
 ﻿using HxClima.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,6 @@ namespace HxClima.Controllers
             new Actividad {ActividadID = 2, Nombre ="Natacion", TempMax=30, TempMin=5, LluviaIndispensable = false},
             new Actividad {ActividadID = 3, Nombre ="Running", TempMax=29, TempMin=15, LluviaIndispensable = true}
         };
-
 
         public IEnumerable<Actividad> GetAllActividades()
         {
