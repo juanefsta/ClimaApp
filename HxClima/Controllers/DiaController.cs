@@ -52,6 +52,7 @@ namespace HxClima.Controllers
                     }
                 }
 
+                /*If para determinar si la actividad cumple con los requisitos del tiempo*/
 
                 if ((actividad.suspendePorLluvia.Equals(!hayLluvias) || !actividad.suspendePorLluvia) && !superaTempMin)
                 {
