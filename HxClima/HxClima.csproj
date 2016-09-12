@@ -72,6 +72,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="climaCSS.css" />
     <Content Include="funciones.js" />
     <Content Include="AngularClima.js" />
     <Content Include="Global.asax" />

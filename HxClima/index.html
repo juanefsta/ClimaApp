@@ -4,37 +4,41 @@
     <title>My App</title>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="AngularClima.js"></script>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="climaCSS.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
-<body ng-app="myApp">
-    <form ng-controller="actividadController" ng-submit="mostrar()">
-        <h3>Seleccionar actividad:</h3>
+<body ng-app="myApp" ng-controller="actividadController">
+    <form ng-submit="mostrar()">
+        <label>Seleccionar actividad:</label>
         <select ng-model="actividadSeleccionada" required>
             <option ng-repeat="actividad in actividades" value="{{actividad}}">
                 {{ actividad.Nombre }}
             </option>
         </select>
-        <h4>Seleccion: {{actividadSeleccionada}}</h4>
-        <h3>Seleccionar cantidad de dias:</h3>
+        <br />
+        <label>Seleccionar cantidad de dias:</label>
         <select ng-model="diaSeleccionado" required>
             <option ng-repeat="dia in cantidades" value="{{ dia }}">
                 {{ dia }}
             </option>
         </select>
-        <button type="submit">Aceptar</button>
         <br />
-        <ul ng-model="xxx">
-            <li ng-repeat="clima in prueba">{{clima.fecha | date:'EEEE'}}</li>
-        </ul>
-        
+        <button type="submit">Aceptar</button>
     </form>
+    <br />
+    <div style="float:left">
+        <div class="container" ng-repeat="clima in prueba" ng-model="climaModel">
+            <span ng-if="clima.sePuede" class="label label-success">{{clima.fecha | date: 'EEEE'}}</span>
+            <span ng-if="!clima.sePuede" class="label label-danger">
+                {{clima.fecha | date: 'EEEE'}}
+            </span>
+            <span ng-if="!clima.sePuede" class="label label-default">
+                {{clima.explicacion}}
+            </span>
+        </div>
+    </div>
 </body>
 </html>
