@@ -2,7 +2,6 @@
 app.controller( 'actividadController', function ( $scope, $http )
 {
     $scope.cantidades = [1, 2, 3, 4, 5];
-    $scope.prueba = [];
     $http.get( "/api/actividad" ).then( function ( response )
     {
         $scope.actividades = response.data;
@@ -24,7 +23,7 @@ app.controller( 'actividadController', function ( $scope, $http )
         $http.post( '/api/dia', config )
            .success( function ( data, status, headers, config )
            {
-               $scope.prueba.push( data );
+               $scope.prueba = data;
            } );
     };
 } );
