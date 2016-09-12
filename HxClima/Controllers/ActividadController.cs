@@ -13,9 +13,9 @@ namespace HxClima.Controllers
     {
         Actividad[] actividades = new Actividad[]
         {
-            new Actividad {ActividadID = 1, Nombre ="Futbol", TempMax=28, TempMin=11, LluviaIndispensable = false},
-            new Actividad {ActividadID = 2, Nombre ="Natacion", TempMax=30, TempMin=12, LluviaIndispensable = false},
-            new Actividad {ActividadID = 3, Nombre ="Running", TempMax=29, TempMin=10, LluviaIndispensable = false}
+            new Actividad {ActividadID = 1, Nombre ="Futbol", TempMax=28, TempMin=11, suspendePorLluvia = true},
+            new Actividad {ActividadID = 2, Nombre ="Natacion", TempMax=30, TempMin=12, suspendePorLluvia = false},
+            new Actividad {ActividadID = 3, Nombre ="Running", TempMax=29, TempMin=10, suspendePorLluvia = true}
         };
 
         public IEnumerable<Actividad> GetAllActividades()

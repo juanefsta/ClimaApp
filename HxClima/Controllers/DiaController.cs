@@ -28,12 +28,13 @@ namespace HxClima.Controllers
                 bool superaTempMin = false;
 
                 //Pregunto si el estado coincide con alguno lluvioso siempre y cuando influya el mal tiempo
-                if (actividad.LluviaIndispensable)
+                if (actividad.suspendePorLluvia)
                 {
                     if (incluye(estadoDelClima, recibo.climas.ElementAt(indexOfList).iDia) ||
                         incluye(estadoDelClima, recibo.climas.ElementAt(indexOfList).iNoche))
                     {
                         hayLluvias = true;
+                        dia.explicacion = "Llueve";
                     }
                 }
 
@@ -41,10 +42,18 @@ namespace HxClima.Controllers
                 if (recibo.climas.ElementAt(indexOfList).tempMinima < actividad.TempMin)
                 {
                     superaTempMin = true;
+                    if (hayLluvias)
+                    {
+                        dia.explicacion = "Llueve + baja temperaturas";
+                    }
+                    else
+                    {
+                        dia.explicacion = "Baja temperatura";
+                    }
                 }
 
-                if (actividad.LluviaIndispensable.Equals(hayLluvias) &&
-                    !superaTempMin)
+
+                if ((actividad.suspendePorLluvia.Equals(!hayLluvias) || !actividad.suspendePorLluvia) && !superaTempMin)
                 {
                     diasPosibles++;
                     dia.fecha = recibo.climas.ElementAt(indexOfList).date;
@@ -52,13 +61,15 @@ namespace HxClima.Controllers
                     dia.explicacion = "";
                     devuelve.Add(dia);
                 }
+
                 else
                 {
                     dia.fecha = recibo.climas.ElementAt(indexOfList).date;
                     dia.sePuede = false;
-                    dia.explicacion ="mal tiempo";
                     devuelve.Add(dia);
                 }
+
+
                 indexOfList++;
             }
 

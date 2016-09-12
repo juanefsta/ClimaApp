@@ -20,7 +20,7 @@ namespace HxClima.Models
         [JsonProperty("TempMin")]
         public double TempMin { get; set; }
 
-        [JsonProperty("LluviaIndispensable")]
-        public bool LluviaIndispensable { get; set; }
+        [JsonProperty("suspendePorLluvia")]
+        public bool suspendePorLluvia { get; set; }
     }   
 }
