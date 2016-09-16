@@ -57,20 +57,17 @@ namespace HxClima.Controllers
                 if ((actividad.suspendePorLluvia.Equals(!hayLluvias) || !actividad.suspendePorLluvia) && !superaTempMin)
                 {
                     diasPosibles++;
-                    dia.fecha = recibo.climas.ElementAt(indexOfList).date;
                     dia.sePuede = true;
                     dia.explicacion = "";
-                    devuelve.Add(dia);
                 }
 
                 else
                 {
-                    dia.fecha = recibo.climas.ElementAt(indexOfList).date;
                     dia.sePuede = false;
-                    devuelve.Add(dia);
                 }
 
-
+                dia.fecha = recibo.climas.ElementAt(indexOfList).date;
+                devuelve.Add(dia);
                 indexOfList++;
             }
 
