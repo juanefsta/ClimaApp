@@ -30,7 +30,7 @@
     </form>
     <br />
     <div style="float:left">
-        <div class="container" ng-repeat="clima in prueba" ng-model="climaModel">
+        <div class="container" ng-repeat="clima in listaClimas" ng-model="climaModel">
             <span ng-if="clima.sePuede" class="label label-success">{{clima.fecha | date: 'EEEE'}}</span>
             <span ng-if="!clima.sePuede" class="label label-danger">
                 {{clima.fecha | date: 'EEEE'}}

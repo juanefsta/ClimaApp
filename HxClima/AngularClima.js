@@ -23,7 +23,7 @@ app.controller( 'actividadController', function ( $scope, $http )
         $http.post( '/api/dia', config )
            .success( function ( data, status, headers, config )
            {
-               $scope.prueba = data;
+               $scope.listaClimas = data;
            } );
     };
 } );
